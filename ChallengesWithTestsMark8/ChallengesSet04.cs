@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace ChallengesWithTestsMark8
 {
@@ -6,47 +7,138 @@ namespace ChallengesWithTestsMark8
     {
         public int AddEvenSubtractOdd(int[] numbers)
         {
-            throw new NotImplementedException();
+            int sum = 0;
+            foreach (int i in numbers)
+            {
+                if (i % 2 == 0)
+                {
+                    sum += i;
+                }
+                else
+                {
+                    sum -= i;
+                }
+            }
+            return sum;
         }
 
         public int GetLengthOfShortestString(string str1, string str2, string str3, string str4)
         {
-            throw new NotImplementedException();
+            int shortestLength = 100;
+            if (str1.Length < shortestLength)
+            {
+                shortestLength = str1.Length;
+            }
+            if (str2.Length < shortestLength)
+            {
+                shortestLength = str2.Length;
+            }
+            if (str3.Length < shortestLength)
+            {
+                shortestLength = str3.Length;
+            }
+            if (str4.Length < shortestLength)
+            {
+                shortestLength = str4.Length;
+            }
+            return shortestLength;
         }
 
         public int GetSmallestNumber(int number1, int number2, int number3, int number4)
         {
-            throw new NotImplementedException();
+            int lowestValue = 100;
+            if (number1 < lowestValue)
+            {
+                lowestValue = number1;
+            }
+            if (number2 < lowestValue)
+            {
+                lowestValue = number2;
+            }
+            if (number3 < lowestValue)
+            {
+                lowestValue = number3;
+            }
+            if (number4 < lowestValue)
+            {
+                lowestValue = number4;
+            }
+            return lowestValue;
         }
 
         public void ChangeBusinessNameTo_TrueCoders(Business biz)
         {
-            throw new NotImplementedException();
+            biz.Name = "TrueCoders";
         }
 
         public bool CouldFormTriangle(int sideLength1, int sideLength2, int sideLength3)
         {
-            throw new NotImplementedException();
+            if (sideLength1 + sideLength2 > sideLength3 &&
+                sideLength1 + sideLength3 > sideLength2 &&
+                sideLength2 + sideLength3 > sideLength1)
+            {
+                return true;
+            }
+            return false;
         }
 
         public bool IsStringANumber(string input)
         {
-            throw new NotImplementedException();
+
+            if (double.TryParse(input, out double value))
+            {
+                return true;
+            }
+            return false;
         }
 
         public bool MajorityOfElementsInArrayAreNull(object[] objs)
         {
-            throw new NotImplementedException();
+
+            int itemCount = objs.Length;
+            int nullCount = 0;
+            foreach (object obj in objs)
+            {
+                if (obj == null) nullCount++;
+            }
+            if (nullCount > itemCount / 2)
+            {
+                return true;
+            }
+            return false;
         }
 
         public double AverageEvens(int[] numbers)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return numbers.Where(x => x % 2 == 0).Average();
+            }
+            catch (ArgumentNullException)
+            {
+                return 0;
+            }
+            catch(InvalidCastException)
+            {
+                return 0;
+            }
         }
 
         public int Factorial(int number)
         {
-            throw new NotImplementedException();
+          if(number < 0 )
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            if(number == 1 || number == 0)
+            {
+                return 1;
+            }
+            if (number >= 2)
+            {
+                var factorial = number * Factorial(number - 1); 
+            }
+            return 0;
         }
     }
 }
